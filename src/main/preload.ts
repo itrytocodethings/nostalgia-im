@@ -3,10 +3,12 @@
 // Disable no-unused-vars, broken for spread args
 /* eslint no-unused-vars: off */
 import { contextBridge, ipcRenderer, IpcRendererEvent } from 'electron';
+import { windowHandler } from './preload/windowHandler';
 
 export type Channels = 'ipc-example';
 
 const electronHandler = {
+  windowHandler,
   ipcRenderer: {
     sendMessage(channel: Channels, ...args: unknown[]) {
       ipcRenderer.send(channel, ...args);

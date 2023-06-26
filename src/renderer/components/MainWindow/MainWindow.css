@@ -1,0 +1,10 @@
+/* disabled electron window frame. title-bar will be the title of our windows. using webkit-app-region to allow dragging. */
+.title-bar {
+  -webkit-user-select: none;
+  -webkit-app-region: drag;
+}
+
+/* fix so buttons in title-bar can be selected. */
+button {
+  -webkit-app-region: no-drag;
+}

@@ -13,8 +13,11 @@ if (require('electron-squirrel-startup')) {
 const createWindow = (): void => {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
-    height: 600,
-    width: 800,
+    transparent: true,
+    resizable: true,
+    frame: false,
+    height: 500,
+    width: 250,
     webPreferences: {
       preload: MAIN_WINDOW_PRELOAD_WEBPACK_ENTRY,
     },
@@ -24,9 +27,9 @@ const createWindow = (): void => {
   mainWindow.loadURL(MAIN_WINDOW_WEBPACK_ENTRY);
 
   // Open the DevTools.
-  if (!app.isPackaged) {
-    mainWindow.webContents.openDevTools()
-  }
+  // if (!app.isPackaged) {
+  //   mainWindow.webContents.openDevTools()
+  // }
 };
 
 ipcMain.on('ipc-example', async (event, arg) => {
@@ -34,6 +37,13 @@ ipcMain.on('ipc-example', async (event, arg) => {
   console.log(msgTemplate(arg));
   event.reply('ipc-example', msgTemplate('pong - reply'));
 });
+
+ipcMain.on('main-window-action', async (event, action) => {
+  const window = BrowserWindow.getFocusedWindow();
+  if (action === 'MINIMIZE') return window.minimize();
+  if (action === 'MAXIMIZE') return window.maximize();
+  if (action === 'CLOSE') return app.quit();
+})
 
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
