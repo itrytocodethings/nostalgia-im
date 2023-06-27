@@ -28,4 +28,16 @@ export const rules: Required<ModuleOptions>['rules'] = [
       },
     },
   },
+  {
+    test: /\.(png|jpe?g|gif|svg)$/,
+    use: [
+      {
+        loader: 'file-loader',
+        options: {
+          name: 'assets/[name].[ext]',
+          publicPath: '../',
+        },
+      },
+    ],
+  },
 ];

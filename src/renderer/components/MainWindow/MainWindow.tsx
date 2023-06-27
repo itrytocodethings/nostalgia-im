@@ -1,7 +1,7 @@
 import { PropsWithChildren } from "react";
 import "./MainWindow.css";
 
-const MainWindow = ({ children, windowTitle }: MainWindowProps) => {
+const MainWindow = ({ children, windowTitle, maximizeDisabled }: MainWindowProps) => {
   return (
     <div className="window flex flex-col h-screen">
       <div className="title-bar min-h-[30px]">
@@ -13,6 +13,7 @@ const MainWindow = ({ children, windowTitle }: MainWindowProps) => {
             onClick={() => window.electron.windowHandler.minimize()}
           ></button>
           <button
+            disabled={maximizeDisabled}
             aria-label="Maximize"
             onClick={() => window.electron.windowHandler.maximize()}
           ></button>
@@ -32,4 +33,5 @@ export default MainWindow;
 
 export interface MainWindowProps extends PropsWithChildren {
   windowTitle: string;
+  maximizeDisabled?: boolean;
 }
