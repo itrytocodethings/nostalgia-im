@@ -4,8 +4,32 @@ import { BsFillKeyFill } from "react-icons/bs";
 import MainContainer from "../../shared/components/MainContainer/MainContainer";
 import TextField from "../../shared/components/inputs/TextField/TextField";
 import { Link } from "react-router-dom";
+import { useForm, SubmitHandler } from "react-hook-form";
+import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
+
+const formSchema = z.object({
+  screenname: z.string({
+    required_error: "ScreenName is required.",
+  }).min(5, 'min 5 chars bro.'),
+  // password: z.string({
+  //   required_error: "Password Required.",
+  // })
+});
 
 const AppMain = () => {
+  const {
+    register,
+    watch,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    resolver: zodResolver(formSchema),
+  });
+
+  const onSubmit = (data: any) => console.log(data);
+  console.log(watch("screenname"), 'this is the watch');
+
   return (
     <MainContainer>
       <div className="main-logo flex justify-end flex-col bg-aim-blue p-2 h-[175px]">
@@ -14,6 +38,7 @@ const AppMain = () => {
       <hr />
       <form>
         <TextField
+          register={register}
           inputId="screenname"
           stackLabel
           inputClasses="m-0"
@@ -25,6 +50,13 @@ const AppMain = () => {
           }
         />
         <Link to="/signup">Get a Screen Name</Link>
+        <button onClick={(e) => {
+          e.preventDefault();
+          if (errors) {
+            console.log(errors);
+          }
+          handleSubmit(onSubmit);
+        }}>Click me pls.</button>
       </form>
     </MainContainer>
   );
