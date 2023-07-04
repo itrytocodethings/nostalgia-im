@@ -1,5 +1,7 @@
 import { PropsWithChildren } from "react";
 import "./MainWindow.css";
+import dude from "../../../../assets/dude.png";
+import Image from "../../../shared/components/image/Image";
 
 const MainWindow = ({
   children,
@@ -7,9 +9,9 @@ const MainWindow = ({
   maximizeDisabled,
 }: MainWindowProps) => {
   return (
-    <div className="window flex flex-col h-screen">
-      <div className="title-bar min-h-[30px]">
-        <div className="title-bar-logo"></div>
+    <div className="window flex flex-col h-screen overflow-y-hidden">
+      <div className="title-bar">
+        <div className="title-bar-logo"><Image imageClasses="w-[20px]" src={dude}/></div>
         <div className="title-bar-text">{windowTitle}</div>
         <div className="title-bar-controls">
           <button
@@ -29,7 +31,7 @@ const MainWindow = ({
         </div>
       </div>
       <div className="window-body flex flex-col grow overflow-y-hidden">
-        <div className="window-wrapper h-full">{children}</div>
+        <div className="window-wrapper h-full overflow-y-auto">{children}</div>
       </div>
     </div>
   );

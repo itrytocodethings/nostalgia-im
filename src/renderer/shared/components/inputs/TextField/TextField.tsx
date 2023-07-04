@@ -8,6 +8,7 @@ const TextField = ({
   labelClasses,
   inputClasses,
   inputId,
+  isPassword,
   register,
 }: TextFieldProps) => {
   return (
@@ -22,7 +23,7 @@ const TextField = ({
         {...register(inputId)}
         className={`${inputClasses}`}
         id={inputId}
-        type="text"
+        type={isPassword ? "password" : "text"}
         name={inputId}
       />
     </div>
@@ -36,4 +37,5 @@ export interface TextFieldProps extends PropsWithChildren, FormInput {
   labelContent?: ReactElement;
   labelClasses?: string;
   inputClasses?: string;
+  isPassword?: boolean;
 }

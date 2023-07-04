@@ -16,8 +16,8 @@ const createWindow = (): void => {
     transparent: true,
     resizable: false,
     frame: false,
-    height: 500,
-    width: 250,
+    height: 400,
+    width: 204,
     minWidth: 250,
     webPreferences: {
       preload: MAIN_WINDOW_PRELOAD_WEBPACK_ENTRY,
