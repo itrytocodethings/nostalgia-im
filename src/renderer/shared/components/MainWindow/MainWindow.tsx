@@ -11,8 +11,12 @@ const MainWindow = ({
   return (
     <div className="window flex flex-col h-screen overflow-y-hidden">
       <div className="title-bar">
-        <div className="title-bar-logo"><Image imageClasses="w-[20px]" src={dude}/></div>
-        <div className="title-bar-text">{windowTitle}</div>
+        <div className="flex items-center gap-2">
+          <div className="title-bar-logo">
+            <Image imageClasses="w-[20px]" src={dude} />
+          </div>
+          <div className="title-bar-text">{windowTitle}</div>
+        </div>
         <div className="title-bar-controls">
           <button
             aria-label="Minimize"

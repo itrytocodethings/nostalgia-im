@@ -1,7 +1,7 @@
 import { PropsWithChildren } from "react";
 const MainContainer = ({ children }: PropsWithChildren) => {
   return (
-    <div className="container mx-auto h-full max-w-[250px]">
+    <div className="container mx-auto h-full max-w-[204px]">
       <main className="h-full">
         {children}
       </main>
