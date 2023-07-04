@@ -9,6 +9,7 @@ const Button = ({
   buttonClasses,
   defaultStyling,
   imgSrc,
+  onClick,
 }: ButtonProps) => {
   return (
     <button
@@ -18,6 +19,7 @@ const Button = ({
           "flex justify-center align-center p-0 min-w-0 shadow-none") ||
         ""
       }${(buttonClasses && `${buttonClasses}`) || ""}`}
+      onClick={onClick}
     >
       {hasWrapper ? (
         <div className={`${wrapperClasses && wrapperClasses}`}>
@@ -39,4 +41,5 @@ interface ButtonProps extends PropsWithChildren {
   buttonClasses?: string;
   defaultStyling?: boolean;
   imgSrc?: string;
+  onClick?: (event: React.MouseEvent) => void;
 }

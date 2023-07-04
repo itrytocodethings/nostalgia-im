@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import TextField from "../../shared/components/inputs/TextField/TextField";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
@@ -34,10 +35,19 @@ const SignInForm = () => {
     console.log(errors, "errors");
     console.log(data, "data");
   };
+
+  const [formDisabled, setFormDisabled] = useState(true);
+
+  useEffect(() => {
+    watch("password") && watch("screenname")
+      ? setFormDisabled(false)
+      : setFormDisabled(true);
+  }, [watch("screenname"), watch("password")]);
+
   return (
     <div className="h-full flex flex-col">
       <div className="main-logo flex justify-end flex-col bg-aim-blue p-2 h-[175px] mb-2 shrink-0">
-        <Image src={noslogo} imageClasses="h-auto w-full"/>
+        <Image src={noslogo} imageClasses="h-auto w-full" />
       </div>
       <hr className="mb-2" />
       <form onSubmit={handleSubmit(onSubmit)} className="h-full">
@@ -68,10 +78,27 @@ const SignInForm = () => {
       </form>
       <div className="flex justify-between items-center">
         <div id="btns-left" className="flex">
-          <Button hasWrapper wrapperClasses="p-1" defaultStyling imgSrc={help}/>
-          <Button hasWrapper wrapperClasses="p-1" defaultStyling imgSrc={setup}/>
+          <Button
+            hasWrapper
+            wrapperClasses="p-1"
+            defaultStyling
+            imgSrc={help}
+          />
+          <Button
+            hasWrapper
+            wrapperClasses="p-1"
+            defaultStyling
+            imgSrc={setup}
+          />
         </div>
-        <Button hasWrapper wrapperClasses="p1" defaultStyling imgSrc={signon} disabled/>
+        <Button
+          hasWrapper
+          wrapperClasses="p-1"
+          defaultStyling
+          imgSrc={signon}
+          onClick={handleSubmit(onSubmit)}
+          disabled={formDisabled}
+        />
       </div>
     </div>
   );

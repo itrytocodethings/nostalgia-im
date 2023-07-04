@@ -1,10 +1,13 @@
 const Image = ({ src, draggable, imageClasses, grayScale }: Image) => {
   return (
     <img
-      className={`${imageClasses && `${imageClasses} ` || ''}${
+      className={`select-none ${imageClasses && `${imageClasses} ` || ''}${
         grayScale && 'grayscale '}`}
       draggable={draggable || false}
       src={src}
+      onDragStart={(e) => {
+        e.preventDefault();
+      }}
     />
   );
 };
