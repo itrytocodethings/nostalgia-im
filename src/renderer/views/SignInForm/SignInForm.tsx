@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import Button from "../../shared/components/button/Button";
 import Image from "../../shared/components/image/Image";
+import { useAuth } from "../../hooks/Auth";
 
 // images
 import noslogo from "../../../assets/noslogo.png";
@@ -22,6 +23,7 @@ const formSchema = yup
   .required();
 
 const SignInForm = () => {
+  const auth = useAuth();
   const {
     watch,
     register,
@@ -31,9 +33,10 @@ const SignInForm = () => {
     resolver: yupResolver(formSchema),
   });
 
-  const onSubmit = (data: any) => {
-    console.log(errors, "errors");
-    console.log(data, "data");
+  const onSubmit = async (data: any) => {
+    // TODO login to allow sign on with screenname once supabase db user tables are created
+    //temporary to test supabase client.
+    console.log(await auth.signIn({email: data.screenname, password: data.password}));
   };
 
   const [formDisabled, setFormDisabled] = useState(true);
