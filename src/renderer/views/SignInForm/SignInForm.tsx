@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import TextField from "../../shared/components/inputs/TextField/TextField";
 import { yupResolver } from "@hookform/resolvers/yup";
-import * as yup from "yup";
+import yup from "yup";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import Button from "../../shared/components/button/Button";

@@ -16,7 +16,7 @@ const createWindow = (): void => {
     transparent: true,
     resizable: false,
     frame: false,
-    height: 500,
+    height: 450,
     width: 220,
     minWidth: 220,
     webPreferences: {

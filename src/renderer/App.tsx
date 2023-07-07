@@ -2,7 +2,7 @@ import { MemoryRouter as Router, Routes, Route } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 import { AuthProvider } from "./hooks/Auth";
-import MainWindow from "./shared/components/MainWindow/MainWindow";
+import MainWindow from "./shared/components/mainwindow/MainWindow";
 import AppMain from "./views/AppMain/AppMain";
 import SignUpForm from "./views/SignUpForm/SignUpForm";
 

@@ -1,7 +1,7 @@
 import { PropsWithChildren } from "react";
 import "./MainWindow.css";
 import dude from "../../../../assets/dude.png";
-import Image from "../../../shared/components/image/Image";
+import Image from "../image/Image";
 
 const MainWindow = ({
   children,
