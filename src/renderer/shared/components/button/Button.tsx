@@ -18,7 +18,7 @@ const Button = ({
         (defaultStyling &&
           "flex justify-center align-center p-0 min-w-0 shadow-none") ||
         ""
-      }${(buttonClasses && `${buttonClasses}`) || ""}`}
+      }${(buttonClasses && ` ${buttonClasses}`) || ""}`}
       onClick={onClick}
     >
       {hasWrapper ? (

@@ -34,7 +34,7 @@ const MainWindow = ({
           ></button>
         </div>
       </div>
-      <div className="window-body flex flex-col grow overflow-y-hidden">
+      <div className="window-body flex flex-col grow overflow-y-hidden my-[3px]">
         <div className="window-wrapper h-full overflow-y-hidden">{children}</div>
       </div>
     </div>
