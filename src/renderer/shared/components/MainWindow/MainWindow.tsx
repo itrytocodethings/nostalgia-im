@@ -35,7 +35,7 @@ const MainWindow = ({
         </div>
       </div>
       <div className="window-body flex flex-col grow overflow-y-hidden">
-        <div className="window-wrapper h-full overflow-y-auto">{children}</div>
+        <div className="window-wrapper h-full overflow-y-hidden">{children}</div>
       </div>
     </div>
   );

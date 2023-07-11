@@ -7,6 +7,7 @@ module.exports = {
     colors: {
       'aim-blue': '#075fa8',
       'aim-red': '#990101',
+      'white': '#ffffff',
     },
     extend: {},
   },
