@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { useAuth } from "../../hooks/Auth";
-import Button from "../../shared/components/button/Button";
 import TopMenu from "../../shared/components/topmenu/TopMenu";
 import Buddies from "./components/Buddies";
 import ListSetup from "./components/ListSetup";
+import { BuddyStatus } from "../../shared/lib/types";
 
 const BuddyTab = ({ isSelected, tabLabel, onClick }: BuddyTabProps) => {
   return (
@@ -22,6 +22,12 @@ const BuddyTab = ({ isSelected, tabLabel, onClick }: BuddyTabProps) => {
 const BuddyList = () => {
   const { user, signOut } = useAuth();
   const [showBuddies, setShowBuddies] = useState(true);
+
+  const dummyBuddies = [
+    { id: 123, name: "xXxcoolbuddynamexXx", status: BuddyStatus.ONLINE },
+    { id: 456, name: "iMissAim", status: BuddyStatus.AWAY },
+    { id: 789, name: "imAlwaysOffline", status: BuddyStatus.OFFLINE }
+  ]
 
   const handleTabState = () => {
     setShowBuddies(!showBuddies);
@@ -47,7 +53,7 @@ const BuddyList = () => {
         </menu>
         <div className="window grow max-h-[339px]" role="tabpanel">
           <div className="bg-white p-1 overflow-y-auto no-scrollbar h-full">
-            {showBuddies ? <Buddies /> : <ListSetup />}
+            {showBuddies ? <Buddies buddies={dummyBuddies} /> : <ListSetup />}
           </div>
         </div>
       </div>
